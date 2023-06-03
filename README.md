@@ -1,4 +1,5 @@
 # ZTBFrontApp
+<<<<<<< HEAD
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
 
@@ -25,3 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+=======
+PFE PROJECT ( Front App !Angular )
+>>>>>>> ddfdb7688a48561672c8757f77a9414836c6786e
