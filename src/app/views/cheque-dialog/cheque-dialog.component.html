@@ -1,0 +1,186 @@
+
+<p-dialog id="dialog1" [(visible)]="chequeDialog"  [draggable]="false" [resizable]="false" [style]="{ width: '1150px',height: '2000px' , right: '355px' }"   [modal]="true" styleClass="p-fluid">
+  
+
+    <ng-template pTemplate="content">
+      <div class="dialog-content" style="width :300px" >
+
+        <!-- <img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.image" class="block m-auto pb-3" *ngIf="product.image" /> -->
+          <div class="field">
+              <label for="id">ID</label>
+              <input type="text" pInputText id="{{cheque.id}}" [(ngModel)]="cheque.id" readonly />
+              <small class="p-error" *ngIf="submitted && !cheque.id">ID is required.</small>
+          </div >
+          
+
+          <div class="field">
+            <label for="mntCheque">Montant</label>
+            <input type="text" pInputText id="mntCheque" [(ngModel)]="formattedMntCheque" readonly />
+          </div>
+          
+          <div  class="field">
+            <label for="numChq">Numéro de Cheque</label>
+            <input type="text" pInputText id="{{cheque.numChq}}" [(ngModel)]="cheque.numChq" readonly />
+          </div>
+
+          <div  class="field">
+            <label for="cmc7">CMC</label>
+            <input type="text" pInputText id="{{cheque.cmc7}}" [(ngModel)]="cheque.cmc7" readonly />
+          </div>
+           
+          <div  class="field">
+            <label for="numChq">Numéro de Cheque</label>
+            <input type="text" pInputText id="{{cheque.numChq}}" [(ngModel)]="cheque.numChq" readonly />
+          </div>
+
+
+          <div  class="field">
+            <label for="nomBenef">Compte</label>
+            <input type="text" pInputText id="{{cheque.nomBenef}}" [(ngModel)]="cheque.nomBenef" readonly />
+          </div>
+
+          <div  class="field">
+            <label for="ribTireur">Nom Benef</label>
+            <input type="text" pInputText id="{{cheque.ribTireur}}" [(ngModel)]="cheque.ribTireur" readonly />
+          </div>
+
+
+          <div class="field">
+            <label for="dateEmission">Date Emission</label>
+            <input type="text" pInputText id="{{cheque.dateEmission}}"[(ngModel)]="cheque.dateEmission" readonly />
+          </div>
+
+          <div  class="field">
+            <label for="codeVal">Code Val</label>
+            <input type="text" pInputText id="{{cheque.codeVal}}" [(ngModel)]="cheque.codeVal" readonly />
+          </div>
+          <div class="field">
+            <label for="codeRemettant">Code Remettant</label>
+            <input type="text" pInputText id="{{cheque.codeRemettant}}" [(ngModel)]="cheque.codeRemettant" readonly />
+          </div>
+          <div class="field">
+            <label for="mntReclame">Mnt Reclame</label>
+            <input type="text" pInputText  id="{{cheque.mntReclame}}" [(ngModel)]="cheque.mntReclame" readonly />
+          </div>
+          <div class="field">
+            <label for="mntRegulInt">Mnt Regul Int</label>
+            <input type="text" pInputText id="{{cheque.mntRegulInt}}"[(ngModel)]="cheque.mntRegulInt" readonly />
+          </div>
+          <div class="field">
+            <label for="agence">Agence</label>
+            <input type="text" pInputText id="{{cheque.agence}}"[(ngModel)]="cheque.agence" readonly />
+          </div>
+          <div class="field">
+            <label for="statut">Statut</label>
+            <input type="text" pInputText  id="{{cheque.statut}}"[(ngModel)]="cheque.statut" readonly />
+          </div>
+        
+          <div class="field">
+            <label for="situationBenef">Situation Benef</label>
+            <input type="text" pInputText id="{{cheque.situationBenef}}"[(ngModel)]="cheque.situationBenef" readonly />
+          </div>
+          <div class="field">
+            <label for="natureCmpt">Nature Cmpt</label>
+            <input type="text" pInputText id="{{cheque.natureCmpt}}"[(ngModel)]="cheque.natureCmpt" readonly />
+          </div>
+          <div class="field">
+            <label for="certifie">Certifie</label>
+            <input type="text" pInputText id="{{cheque.certifie}}"[(ngModel)]="cheque.certifie" readonly />
+          </div>
+          <div class="field">
+            <label for="numCpt">NumCompte</label>
+            <input type="text" pInputText id="{{cheque.numCpt}}"[(ngModel)]="cheque.numCpt" readonly />
+          </div>
+        
+    
+        <div class="field">
+
+
+            <label for="visDeForme">visDeForme</label>
+            <p-multiSelect 
+              id="visDeForme"
+              [options]="decisionReasons['visDeForme'] | keyvalue" 
+              [(ngModel)]="cheque.visDeForme"
+              optionLabel="value"
+              optionValue="key"
+            ></p-multiSelect>
+          </div>
+
+          <div class="field">
+            <label for="inexploitable">Inexploitable</label>
+            <p-multiSelect 
+              id="inexploitable"
+              [options]="decisionReasons['inexploitable'] | keyvalue" 
+              [(ngModel)]="cheque.visDeForme"
+              optionLabel="value"
+              optionValue="key"
+            ></p-multiSelect>
+          </div>
+        
+        </div>
+    
+    
+      <div class="dialog-section">
+
+    </div>
+
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog(cheque)"></button>
+        <!-- <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button> -->
+        <p-button (click)="toggleDialog2(cheque)" icon="pi pi-external-link" label="Show" [style]="{ width: '100px' }"></p-button>
+    </ng-template>
+
+
+
+        
+       
+
+
+</p-dialog>
+
+
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+
+
+<p-dialog [draggable]="false" [resizable]="false" id="dialog2" header="ImageView" [(visible)]="chequeDialog2" [style]="{ width: '750px', height: '900px', left: '595px' }">
+    <ng-template pTemplate="content">
+      <div class="dialog-content">
+<!--
+        <div class="card flex justify-content-center">
+            <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_recto.jpg')" [preview]="true" alt="Image" width="250">
+                <ng-template pTemplate="indicator">
+                    <i class="pi pi-check"></i>
+                </ng-template>
+            </p-image>
+        </div>
+      -->
+
+        <div *ngFor="let path of signaturePaths">
+          <div class="card flex justify-content-center">
+            <p-image [src]="getSafeUrl(path)" alt="Signature Image" width="600"></p-image>
+          </div>
+        </div>
+
+        <div class="card flex justify-content-center">
+        
+          <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_recto.jpg')" alt="Recto Image" width="600"></p-image>
+        </div>
+        <div class="card flex justify-content-center">
+        
+          <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_verso.jpg')" alt="Verso Image" width="600"></p-image>
+        </div>
+
+
+        
+
+
+       
+
+      </div>
+    </ng-template>
+  </p-dialog>
+  
+  
+
