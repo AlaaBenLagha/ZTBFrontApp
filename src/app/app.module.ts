@@ -10,7 +10,7 @@ import { Datatable1Module } from './views/datatable1/datatable1.module';
 import { T24RetrievalServiceService } from './service/t24-retrieval-service.service';
 import { T24DataRetrievalModule } from './domain/t24-data-retrieval/t24-data-retrieval.module';
 import { FormsModule } from '@angular/forms';
-
+import { WebsocketService } from './service/websocket.service';
 
 
 
@@ -139,10 +139,11 @@ const APP_CONTAINERS = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     T24RetrievalServiceService,
+    WebsocketService,
     IconSetService,
     ProductService,
     CustomerService,
-    Title
+    Title,
   ],
   bootstrap: [AppComponent],
 })

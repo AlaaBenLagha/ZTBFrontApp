@@ -12,10 +12,7 @@ export const navItems: INavData[] = [
     name: 'Consultation',
     url: '/consultation',
     iconComponent: { name: 'cilSpreadsheet' },
-    // badge: {
-    //   color: '#080c05cc',
-    //   text: 'NEW'
-    // }
+
   },
 
 
@@ -26,19 +23,6 @@ export const navItems: INavData[] = [
 
   },
 
-  // {
-  //   name: 'Datatable',
-  //   url: '/datatable',
-  //   iconComponent: { name: 'cilSpreadsheet' },
-    
-  // },
-
-  // {
-  //   name: 'Datatable1',
-  //   url: '/datatable1',
-  //   iconComponent: { name: 'cilSpreadsheet' },
-   
-  // },
   
  
 

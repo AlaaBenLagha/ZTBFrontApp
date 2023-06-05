@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef,HostListener } from '@angular/core';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { T24Cheque} from '../../domain/models/t24-cheque';
 import { T24RetrievalServiceService } from 'src/app/service/t24-retrieval-service.service';
@@ -15,14 +15,17 @@ import { CurrencyPipe } from '@angular/common';
 export class ChequeDialogComponent {
   chequeDialog2: boolean = false;
   formattedMntCheque!: string | null;
-  
+  notitle: string = "";
+  validationTitle: string = "Validation";
+
+  cardTitle: string = "Content";
   decisionReasons: { [key: string]: { [key: string]: string } } = {};
   chequeDialog!: boolean;
   signaturePaths: string[] = [];
   submitted!: boolean;
   cheque!: T24Cheque;
 
-  constructor(private service:T24RetrievalServiceService,private messageService: MessageService,private sanitizer: DomSanitizer,private currencyPipe: CurrencyPipe ) {
+  constructor(private service:T24RetrievalServiceService,private messageService: MessageService,private sanitizer: DomSanitizer,private currencyPipe: CurrencyPipe ,private cdr: ChangeDetectorRef,) {
         
   }
 
@@ -90,7 +93,12 @@ editCheque(cheque: T24Cheque) {
 
 
 
-
+@HostListener('document:keydown', ['$event'])
+handleKeyboardEvent(event: KeyboardEvent) { 
+  if(event.key === 'Escape'){
+    this.hideDialog(this.cheque);
+  }
+}
 
  
     
@@ -104,8 +112,12 @@ hideDialog(cheque: T24Cheque) {
         this.chequeDialog2 = false;  // only hide the second dialog if the first dialog is being closed
       }
       this.submitted = false;
+       // Emit the event of switch state
+       this.service.chequeDeselected.next(this.cheque);
     },
   );
+
+  this.cdr.detectChanges();  // Trigger change detection
 }
 
 
@@ -122,16 +134,18 @@ fetchSignaturePaths(cheque: T24Cheque) {
 formatChequeMnt(chequeMnt: number): string {
   let formattedChequeMnt = '';
   if (chequeMnt) {
-    formattedChequeMnt = this.currencyPipe.transform(chequeMnt, 'TND', 'symbol', '1.2-2') || '';
+    const currencyFormat = this.currencyPipe.transform(chequeMnt, 'TND', 'symbol', '1.2-2') || '';
+    formattedChequeMnt = `${currencyFormat.replace('TND', '')} TND`;
   } else {
     formattedChequeMnt = 'N/A';
   }
-  return formattedChequeMnt;
+  return formattedChequeMnt.trim();
 }
 
+
+
 toggleDialog2(cheque: any): void {
-  // If the dialog is currently open, close it.
-  // If it's closed, show it by calling the existing "show" method.
+  // open and close imaages dialog
   if (this.chequeDialog2) {
     this.chequeDialog2 = false;
   } else {
@@ -144,6 +158,10 @@ show(cheque: T24Cheque) {
   this.fetchSignaturePaths(cheque);
   
 }
+
+
+
+
 
 
 }

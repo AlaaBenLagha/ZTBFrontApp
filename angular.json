@@ -47,6 +47,9 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
+              "@types/sockjs-client",
+              "sockjs-client",
+              "@sockjs-client",
               "quill",
               "chart.js",
               "@coreui/chartjs/dist/js/coreui-chartjs.js"
@@ -81,6 +84,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "coreui-free-angular-admin-template:build",
+             "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "coreui-free-angular-admin-template:build:production"
