@@ -1,13 +1,18 @@
 
 <p-dialog id="dialog1" [(visible)]="chequeDialog"  [draggable]="false" [resizable]="false" [style]="{ width: '1000px',height: '2000px' , right: '440px' }"   [modal]="true" styleClass="p-fluid dialog-container" [closeOnEscape]="false">
+    
   
   
     <ng-template pTemplate="content">
 
+    
+
       <div class="centered-content">
       <p-card-header styleClass="p-fluid dialog-container">
 
-       
+        <img *ngIf="cheque.certifie === 'YES'" src="assets/images/certified.png" alt="Diploma" style="width:50px; height:50px;" class="move-right">
+        <img *ngIf="cheque.certifie === 'NO'" src="assets/images/uncertified.png" alt="Diploma" style="width:60px; height:60px;" class="move-right">
+   
 
         <p-divider align="center"><div class="inline-flex align-items-center"><b>ID</b></div></p-divider>
         <input class="center-text" type="text" pInputText id="{{cheque.id}}" [(ngModel)]="cheque.id" style="width:300px" readonly />
@@ -129,8 +134,8 @@
 
         <div class="col-5">
         <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Certifie</b></div></p-divider>
-          <input class="secondColumn" type="text" pInputText id="{{cheque.certifie}}"[(ngModel)]="cheque.certifie" readonly />
+          <p-divider align="left"><div class="inline-flex align-items-center"><b>Date Emission</b></div></p-divider>
+          <input class="thirdColumn" type="text" pInputText id="{{cheque.dateEmission}}"[(ngModel)]="cheque.dateEmission" readonly />
         </div>
         </div>
 
@@ -187,8 +192,7 @@
       </div>
 
 
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Date Emission</b></div></p-divider>
-            <input class="thirdColumn" type="text" pInputText id="{{cheque.dateEmission}}"[(ngModel)]="cheque.dateEmission" readonly />
+          
           
           
           </p-card-body>
