@@ -31,6 +31,7 @@ export class Datatable1Component implements OnInit, OnDestroy{
     
      certifies!: any[];
     statuses!: any[];  
+    selections!: any[];  
     chequeDialog!: boolean;
     cheque!: T24Cheque;   
 
@@ -80,6 +81,11 @@ export class Datatable1Component implements OnInit, OnDestroy{
         this.statuses = [
           { label: 'UP', value: 1 },
           { label: 'DOWNS', value: 2 }
+        ];
+
+        this.selections = [
+          { label: 'Selected', value: 1 },
+          { label: 'UnSelected', value: 2 }
         ];
   
         this.subs.add(

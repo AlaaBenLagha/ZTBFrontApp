@@ -6,6 +6,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CurrencyPipe } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-cheque-dialog',
   templateUrl: './cheque-dialog.component.html',
@@ -13,12 +14,16 @@ import { CurrencyPipe } from '@angular/common';
   providers: [MessageService, ConfirmationService]
 })
 export class ChequeDialogComponent {
+
+  
   chequeDialog2: boolean = false;
   formattedMntCheque!: string | null;
   notitle: string = "";
   validationTitle: string = "Validation";
 
   cardTitle: string = "Content";
+  cardTitleColor: string = 'red'; // color for cardTitle
+
   decisionReasons: { [key: string]: { [key: string]: string } } = {};
   chequeDialog!: boolean;
   signaturePaths: string[] = [];
@@ -84,12 +89,33 @@ editCheque(cheque: T24Cheque) {
   this.cheque = { ...cheque };
   this.formattedMntCheque = this.formatChequeMnt(this.cheque.mntCheque);
   this.chequeDialog = true;
+  this.toggleDialog2(cheque);
   this.messageService.add({
       severity:'info', 
       summary:'Information', 
       detail: `Processing cheque with ID: ${this.cheque.id}` // Displaying cheque id in the toaster
   });
+  
+  
 }
+
+toggleDialog2(cheque: any): void {
+  // open and close imaages dialog
+  if (this.chequeDialog2) {
+    this.chequeDialog2 = false;
+  } else {
+    this.show(cheque);
+  }
+}
+
+show(cheque: T24Cheque) {
+  this.chequeDialog2 = true;
+  this.fetchSignaturePaths(cheque);
+  
+}
+
+
+
 
 
 
@@ -144,21 +170,34 @@ formatChequeMnt(chequeMnt: number): string {
 
 
 
-toggleDialog2(cheque: any): void {
-  // open and close imaages dialog
-  if (this.chequeDialog2) {
-    this.chequeDialog2 = false;
-  } else {
-    this.show(cheque);
-  }
+getStyledCardTitle() {
+  return `<span style="color: red">${this.cardTitle}</span>`;
 }
 
-show(cheque: T24Cheque) {
-  this.chequeDialog2 = true;
-  this.fetchSignaturePaths(cheque);
-  
-}
 
+
+
+
+
+
+
+// onScroll(event: WheelEvent) {
+//     console.log('Scroll event triggered');
+//     event.preventDefault();
+//     let scale = 1; // this should be stored in a field of the component
+//     const factor = 0.1; // adjust this to control how much zoom happens per scroll
+//     if (event.deltaY < 0) {
+//         // Scrolling up, increase scale
+//         scale *= (1 + factor);
+//     } else {
+//         // Scrolling down, decrease scale
+//         scale *= (1 - factor);
+//     }
+//     const dialogElement = document.getElementById('dialog2');
+//     if (dialogElement) {
+//         dialogElement.style.transform = `scale(${scale})`;
+//     }
+// }
 
 
 

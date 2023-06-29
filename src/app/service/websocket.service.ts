@@ -12,7 +12,7 @@ export class WebsocketService {
     private chequeSelectedSubject = new Subject<T24Cheque>();
 
     constructor() {
-        this.client = Stomp.over(new SockJS('http://localhost:8080/websocket-app'));
+        this.client = Stomp.over(new SockJS('http://127.0.0.1:63007/websocket-app'));
         this.client.onConnect = (frame) => {
             this.client.subscribe('/topic/cheque-selected', (message: IMessage) => {
                 this.chequeSelectedSubject.next(JSON.parse(message.body));

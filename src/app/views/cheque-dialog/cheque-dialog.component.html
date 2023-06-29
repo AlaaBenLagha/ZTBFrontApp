@@ -1,11 +1,11 @@
 
-<p-dialog id="dialog1" [(visible)]="chequeDialog"  [draggable]="false" [resizable]="false" [style]="{ width: '1000px',height: '2000px' , right: '440px' }"   [modal]="true" styleClass="p-fluid dialog-container" [closeOnEscape]="false">
+<p-dialog id="dialog1" [(visible)]="chequeDialog"  [draggable]="false" [resizable]="false" [style]="{ width: '700px',height: '999px' , right: '590px' }"   [modal]="true" styleClass="p-fluid dialog-container" [closeOnEscape]="false">
     
   
   
-    <ng-template pTemplate="content">
+    <ng-template pTemplate="content" >
 
-    
+      <p-card class="shadow-5" [header]="cardTitle" [style]="{ width: '650px'}" >
 
       <div class="centered-content">
       <p-card-header styleClass="p-fluid dialog-container">
@@ -15,28 +15,34 @@
    
 
         <p-divider align="center"><div class="inline-flex align-items-center"><b>ID</b></div></p-divider>
-        <input class="center-text" type="text" pInputText id="{{cheque.id}}" [(ngModel)]="cheque.id" style="width:300px" readonly />
+        <div class="center-text" type="text">{{ cheque.id }}</div>
         <small class="p-error" *ngIf="submitted && !cheque.id">ID is required.</small>
 
       
         <p-divider align="center"><div class="inline-flex align-items-center"><b>CMC</b></div></p-divider>     
-        <input class="center-text" type="text" pInputText id="{{cheque.cmc7}}" [(ngModel)]="cheque.cmc7" style="width:300px" readonly />
+        <div class="center-text" type="text">{{ cheque.cmc7 }}</div>
 
      
         <p-divider align="center"><div class="inline-flex align-items-center"><b>Compte</b></div></p-divider>     
-        <input class="center-text" type="text" pInputText id="{{cheque.ribTireur}}" [(ngModel)]="cheque.ribTireur" style="width:300px" readonly />
+        <div class="center-text" type="text">{{ cheque.numChq }}</div>
      
       
       </p-card-header>
-       </div>
+
+
+      
+      </div>
+
+
+      <p-divider align="center"><div class="line"></div></p-divider>     
     
 
 
      
-
+      
         
       
-      <p-card class="shadow-5" [header]="cardTitle"  [style]="{ width: '950px' }" >
+     
        
        
    
@@ -70,132 +76,131 @@
 
     
       <p-card-body>
-      <div class="grid">
 
-        <div class="col-5">
-        <div class="p-fluid">
-            <p-divider align="left"><div class="inline-flex align-items-center"><b>Numéro de Cheque</b></div></p-divider>
-            <input type="text" pInputText id="{{cheque.numChq}}" [(ngModel)]="cheque.numChq" readonly />
+        <div class="grid">
+
+          <div class="col-5">
+          <div class="p-fluid">
+              <p-divider align="left"><div class="inline-flex align-items-center"><b>Numéro de Cheque</b></div></p-divider>
+              <div class="center-text" type="text">{{ cheque.numChq }}</div>
+          </div>
+          </div>
+      
+          <div class="col-2"><p-divider layout="vertical"></p-divider></div>
+      
+          <div class="col-5">
+          <div class="p-fluid">
+              <p-divider align="left"><div class="inline-flex align-items-center"><b>Montant</b></div></p-divider>
+              <div class="center-text" type="text" >{{ formattedMntCheque }}</div>
+          </div> 
+          </div>
+          
         </div>
+      
+        <div class="grid">
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Nom Benef</b></div></p-divider> 
+            <div class="center-text" type="text">{{ cheque.nomBenef }}</div> 
+          </div>
+          </div>
+      
+          <div class="col-2"><p-divider layout="vertical"></p-divider></div>
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Rib Benef</b></div></p-divider>  
+            <div class="center-text" type="text">{{ cheque.ribBenef }}</div> 
+          </div> 
+          </div>
+          
         </div>
-
-        <div class="col-2"><p-divider layout="vertical"></p-divider></div>
-
-        <div class="col-5">
-        <div class="p-fluid">
-            <p-divider align="left"><div class="inline-flex align-items-center"><b>Montant</b></div></p-divider>
-            <input type="text" pInputText id="mntCheque" [(ngModel)]="formattedMntCheque" readonly />   
-        </div> 
+      
+        <div class="grid">
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>NumCompte</b></div></p-divider>  
+            <div class="center-text" type="text">{{ cheque.numCpt }}</div>  
+          </div>
+          </div>
+      
+          <div class="col-2"><p-divider layout="vertical"></p-divider></div>
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Code Val</b></div></p-divider>
+            <div class="center-text" type="text">{{ cheque.codeVal }}</div>  
+          </div> 
+          </div>
+          
         </div>
-        
-      </div>
-
-      <div class="grid">
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Nom Benef</b></div></p-divider>  
-          <input type="text" pInputText id="{{cheque.nomBenef}}" [(ngModel)]="cheque.nomBenef" readonly />
+      
+        <div class="grid">
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Date Emission</b></div></p-divider>
+            <div class="center-text" type="text">{{ cheque.dateEmission }}</div> 
+          </div>
+          </div>
+      
+          <div class="col-2"><p-divider layout="vertical"></p-divider></div>
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Nature Cmpt</b></div></p-divider>
+            <div class="center-text" type="text">{{ cheque.natureCmpt }}</div> 
+          </div> 
+          </div>
+          
         </div>
+      
+        <div class="grid">
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Agence</b></div></p-divider>
+            <div class="center-text" type="text">{{ cheque.agence }}</div>
+          </div>
+          </div>
+      
+          <div class="col-2"><p-divider layout="vertical"></p-divider></div>
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Status</b></div></p-divider>
+            <div class="center-text" type="text">{{ cheque.statut }}</div>
+          </div> 
+          </div>
+          
         </div>
-
-        <div class="col-2"><p-divider layout="vertical"></p-divider></div>
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Rib Benef</b></div></p-divider>  
-          <input type="text" pInputText id="{{cheque.ribBenef}}" [(ngModel)]="cheque.ribBenef" readonly />
-        </div> 
+      
+      
+        <div class="grid">
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Code Remettant</b></div></p-divider>
+            <div class="center-text" type="text">{{ cheque.codeRemettant }}</div>
+          </div>
+          </div>
+      
+          <div class="col-2"><p-divider layout="vertical"></p-divider></div>
+      
+          <div class="col-5">
+          <div class="p-fluid">
+            <p-divider align="left"><div class="inline-flex align-items-center"><b>Situation Benef</b></div></p-divider>
+            <div class="center-text" type="text">{{ cheque.situationBenef }}</div>
+          </div> 
+          </div>
         </div>
-        
-      </div>
-
-      <div class="grid">
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>NumCompte</b></div></p-divider>   
-          <input class="secondColumn" type="text" pInputText id="{{cheque.numCpt}}"[(ngModel)]="cheque.numCpt"  readonly />
-        </div>
-        </div>
-
-        <div class="col-2"><p-divider layout="vertical"></p-divider></div>
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Code Val</b></div></p-divider>
-          <input class="secondColumn" type="text" pInputText id="{{cheque.codeVal}}" [(ngModel)]="cheque.codeVal" readonly />
-        </div> 
-        </div>
-        
-      </div>
-
-      <div class="grid">
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Date Emission</b></div></p-divider>
-          <input class="thirdColumn" type="text" pInputText id="{{cheque.dateEmission}}"[(ngModel)]="cheque.dateEmission" readonly />
-        </div>
-        </div>
-
-        <div class="col-2"><p-divider layout="vertical"></p-divider></div>
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Nature Cmpt</b></div></p-divider>
-          <input class="secondColumn" type="text" pInputText id="{{cheque.natureCmpt}}"[(ngModel)]="cheque.natureCmpt" readonly />
-        </div> 
-        </div>
-        
-      </div>
-
-      <div class="grid">
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Agence</b></div></p-divider>
-          <input class="secondColumn" type="text" pInputText id="{{cheque.agence}}"[(ngModel)]="cheque.agence" readonly />
-        </div>
-        </div>
-
-        <div class="col-2"><p-divider layout="vertical"></p-divider></div>
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Status</b></div></p-divider>
-          <input class="secondColumn" type="text" pInputText  id="{{cheque.statut}}"[(ngModel)]="cheque.statut" readonly />
-        </div> 
-        </div>
-        
-      </div>
-
-
-      <div class="grid">
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Code Remettant</b></div></p-divider>
-          <input class="thirdColumn" type="text" pInputText id="{{cheque.codeRemettant}}" [(ngModel)]="cheque.codeRemettant" readonly />
-        </div>
-        </div>
-
-        <div class="col-2"><p-divider layout="vertical"></p-divider></div>
-
-        <div class="col-5">
-        <div class="p-fluid">
-          <p-divider align="left"><div class="inline-flex align-items-center"><b>Situation Benef</b></div></p-divider>
-            <input class="thirdColumn" type="text" pInputText id="{{cheque.situationBenef}}"[(ngModel)]="cheque.situationBenef" readonly />
-        </div> 
-        </div>
-        
-      </div>
-
 
           
           
           
-          </p-card-body>
+      </p-card-body>
           
       
 
@@ -220,7 +225,8 @@
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog(cheque)"></button>
         <!-- <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button> -->
-        <p-button (click)="toggleDialog2(cheque)" icon="pi pi-external-link" label="Show" [style]="{ width: '100px' }"></p-button>
+        <!-- <p-button (click)="toggleDialog2(cheque)" icon="pi pi-external-link" label="Show" [style]="{ width: '100px' }"></p-button> -->
+      
     </ng-template>
 
 
@@ -232,38 +238,58 @@
 </p-dialog>
 
 
-<p-confirmDialog [style]="{ width: '800px' }"></p-confirmDialog>
+<p-confirmDialog [style]="{ width: '1250px'}"></p-confirmDialog>
 
 
-<p-dialog [draggable]="false" [resizable]="false" id="dialog2" header="ImageView" [(visible)]="chequeDialog2" [style]="{ width: '940px', height: '999px', left: '530px' }" styleClass="p-fluid dialog-container" [closeOnEscape]="false">
+<p-dialog [draggable]="false" [resizable]="false" id="dialog1" header="ImageView" [(visible)]="chequeDialog2" [style]="{ width: '1200px', height: '999px', left: '360px' }" styleClass="p-fluid dialog-container" [closeOnEscape]="false" >      
+  <ng-template pTemplate="content">
+    <div class="centered-content" style="display: flex; justify-content: center; align-items: center;">
+
+      <p-card class="cd" [header]="cardTitle" [style]="{ width: '580px'}">
+
+      <div *ngFor="let path of signaturePaths">
+        <div class="card flex justify-content-center">
+          <p-image [src]="getSafeUrl(path)" alt="Signature Image" width="500px" height="400px"></p-image>
+        </div>
+        <div class="card flex justify-content-center">
+          <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_recto.jpg')" alt="Recto Image" width="500px" height="400px"></p-image>
+        </div>
+      </div>
+
+      <div class="card flex justify-content-center">
+        <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_verso.jpg')" alt="Verso Image" width="500px" height="400px"></p-image>
+      </div>
+     </p-card>
+    </div>
+  </ng-template>
+</p-dialog>
+
+
+<!--
+
+<p-dialog [draggable]="false" [resizable]="false" id="dialog1" header="ImageView" [(visible)]="chequeDialog2" [style]="{ width: '1200px', height: '400px', left: '360px' }" styleClass="p-fluid dialog-container" [closeOnEscape]="false" >
     <ng-template pTemplate="content">
       <div class="centered-content">
-        <p-card class="cd" [header]="cardTitle"  [style]="{ width: '800px'}">
-
-        <div *ngFor="let path of signaturePaths">
-          <div class="card flex justify-content-center">
-            <p-image [src]="getSafeUrl(path)" alt="Signature Image" width="600"></p-image>
+  
+        <p-card class="cd">
+          <div class="dialog-header" >
+            <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_recto.jpg')" alt="Recto Image" width="500px" ></p-image>
           </div>
-          <div class="card flex justify-content-center">
-          <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_recto.jpg')" alt="Recto Image" width="600"></p-image>
-          </div>
-        </div>
-
-   
-        <div class="card flex justify-content-center">
         
-          <p-image [src]="getSafeUrl('http://localhost:3000/images/' + cheque.dateImgNew + '/' + cheque.cmc7 + '_verso.jpg')" alt="Verso Image" width="600"></p-image>
-        </div>
-
-
-        
-
-
-       
        </p-card>
       </div>
     </ng-template>
   </p-dialog>
+
+
+
+-->
+
+    
+
+
+
+
   
   
 

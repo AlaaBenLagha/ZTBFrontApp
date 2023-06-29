@@ -105,6 +105,7 @@ import { CurrencyPipe } from '@angular/common';
 
 
 
+
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
