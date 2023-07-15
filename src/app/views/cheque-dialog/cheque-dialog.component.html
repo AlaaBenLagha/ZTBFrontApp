@@ -60,14 +60,15 @@
 
       
 
-        <p-divider align="left"><div class="inline-flex align-items-center"><b>Inexploitable</b></div></p-divider>  
+        <p-divider align="left"><div class="inline-flex align-items-center"><b>inexploitable</b></div></p-divider>  
         <p-multiSelect 
           id="inexploitable"
           [options]="decisionReasons['inexploitable'] | keyvalue" 
-          [(ngModel)]="cheque.visDeForme"
+          [(ngModel)]="cheque.inexploitable"
           optionLabel="value"
           optionValue="key"
         ></p-multiSelect>
+
 
 
       </p-card-header>
@@ -224,16 +225,11 @@
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog(cheque)"></button>
+        <button pButton type="button" label="Process" (click)="processCheque()" label="Process"></button>
         <!-- <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button> -->
-        <!-- <p-button (click)="toggleDialog2(cheque)" icon="pi pi-external-link" label="Show" [style]="{ width: '100px' }"></p-button> -->
+        <!--<p-button (click)="toggleDialog2(cheque)" icon="pi pi-external-link" label="Show" [style]="{ width: '100px' }"></p-button>-->
       
     </ng-template>
-
-
-
-        
-       
-
 
 </p-dialog>
 
@@ -241,6 +237,41 @@
 <p-confirmDialog [style]="{ width: '1250px'}"></p-confirmDialog>
 
 
+
+
+
+
+
+
+
+<p-dialog [draggable]="false" [resizable]="false" id="dialog1" header="ImageView" [(visible)]="chequeDialog2" [style]="{ width: '1200px', height: '999px', left: '360px' }" styleClass="p-fluid dialog-container" [closeOnEscape]="false" >      
+  <ng-template pTemplate="content">
+    <div class="centered-content" style="display: flex; justify-content: center; align-items: center;">
+
+      <p-card class="cd" [header]="cardTitle" [style]="{ width: '580px'}">
+
+      <div *ngFor="let path of signaturePaths">
+        <div class="card flex justify-content-center">
+          <p-image [src]="path" alt="Signature Image" width="500px" height="400px"></p-image>
+        </div>
+      </div>
+
+      <div class="card flex justify-content-center">
+        <p-image [src]="chequeImBasePath + cheque.dateImgNew + '/' + cheque.cmc7 + '_recto.jpg'" alt="Recto Image" width="500px" height="400px"></p-image>
+      </div>
+      
+      <div class="card flex justify-content-center">
+        <p-image [src]="chequeImBasePath + cheque.dateImgNew + '/' + cheque.cmc7 + '_verso.jpg'" alt="Verso Image" width="500px" height="400px"></p-image>
+      </div>
+     </p-card>
+    </div>
+  </ng-template>
+</p-dialog>
+
+
+
+
+<!--
 <p-dialog [draggable]="false" [resizable]="false" id="dialog1" header="ImageView" [(visible)]="chequeDialog2" [style]="{ width: '1200px', height: '999px', left: '360px' }" styleClass="p-fluid dialog-container" [closeOnEscape]="false" >      
   <ng-template pTemplate="content">
     <div class="centered-content" style="display: flex; justify-content: center; align-items: center;">
@@ -263,6 +294,12 @@
     </div>
   </ng-template>
 </p-dialog>
+
+
+-->
+
+
+
 
 
 <!--
