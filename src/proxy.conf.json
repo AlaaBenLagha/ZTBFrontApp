@@ -1,7 +1,18 @@
 {
-    "/api": {
-        "target": "http://localhost:8080",
-        "secure": false,
-        "changeOrigin": true
+  "/api1": {
+    "target": "http://t24-data-service.info",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api1": "/api"
     }
+  },
+  "/api2": {
+    "target": "http://t24-validator-service.info",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api2": "/api"
+    }
+  }
 }

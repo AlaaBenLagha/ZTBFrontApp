@@ -8,11 +8,13 @@ import { T24Cheque } from '../domain/models/t24-cheque';
     providedIn: 'root'
 })
 export class WebsocketService {
+    private apiUrl = 'http://t24-data-service.info'; // Ingress URL`
     private client: Client;
     private chequeSelectedSubject = new Subject<T24Cheque>();
 
     constructor() {
-        this.client = Stomp.over(new SockJS('http://127.0.0.1:63007/websocket-app'));
+       
+        this.client = Stomp.over(new SockJS(`${this.apiUrl}/websocket-app`));
         this.client.onConnect = (frame) => {
             this.client.subscribe('/topic/cheque-selected', (message: IMessage) => {
                 this.chequeSelectedSubject.next(JSON.parse(message.body));
