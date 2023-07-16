@@ -8,7 +8,7 @@ import { CustomerService } from './service/customerservice';
 import { HttpClientModule } from '@angular/common/http';
 import { Datatable1Module } from './views/datatable1/datatable1.module';
 import { T24RetrievalServiceService } from './service/t24-retrieval-service.service';
-import { T24DataRetrievalModule } from './domain/t24-data-retrieval/t24-data-retrieval.module';
+
 import { FormsModule } from '@angular/forms';
 import { WebsocketService } from './service/websocket.service';
 
@@ -100,7 +100,6 @@ const APP_CONTAINERS = [
     BrowserAnimationsModule,
     AppRoutingModule,
     AvatarModule,
-    T24DataRetrievalModule,
     ChequeDialogModule,
     Datatable1Module,
     HttpClientModule,

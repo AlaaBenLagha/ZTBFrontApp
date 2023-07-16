@@ -37,16 +37,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/datatable1/datatable1.module').then((m) => m.Datatable1Module)
       },
-      {
-        path: 'data',
-        loadChildren: () =>
-          import('./domain/t24-data-retrieval/t24-data-retrieval.module').then((m) => m.T24DataRetrievalModule)
-      },
-
-  
-
      
-
     ]
   },
  
